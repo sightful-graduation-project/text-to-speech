@@ -1,15 +1,10 @@
 from gtts import gTTS
+from playsound import playsound
 import os
 
-fh= open("text.txt","r")
-textToRead = fh.read().replace("\n", " ")
- 
-language = 'en'
-
-output = gTTS(text=textToRead,lang=language,slow=False)
-
-output.save("output.mp3")
-
-fh.close()
-
-os.system("start output.mp3")
+def play_text(text_to_play):
+    language = 'en'
+    output = gTTS(text=text_to_play,lang=language,slow=False)
+    output.save('output.mp3')
+    playsound('output.mp3')
+    os.remove("output.mp3")
